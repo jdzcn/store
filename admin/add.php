@@ -1,8 +1,12 @@
 <?php
+  define("IMGDIR","../images/");
+  include("compress.php");
+  include("watermark.php");
+
 	echo "name:".$_POST["name"]."<br>";
 	echo "category:".$_POST["category"]."<br>";
 	echo "tech:".$_POST["tech"]."<br>";
-	echo "desc:".$_POST["desc"]."<br>";
+	// echo "desc:".$_POST["desc"]."<br>";
 
 	echo "spec:".$_POST["spec"]."<br>";
 	echo "price:".$_POST["price"]."<br>";
@@ -21,15 +25,22 @@ for( $i=0 ; $i < $total ; $i++ ) {
   //Make sure we have a file path
   if ($tmpFilePath != ""){
     //Setup our new file path
-    $newFilePath = "../images/".$_FILES['images']['name'][$i];
+    $newFilePath = IMGDIR.$_FILES['images']['name'][$i];
+    
+    // $resizeimg = IMGDIR."s".$filename;
+    // $markimg=IMGDIR."m".$filename;
     //imagemagick:composite -dissolve 30% -gravity center logo.png 1.jpg 2.jpg
     //convert 1.jpg -resize 100x100 resize_1.jpg
-    echo $tmpFilePath."<br>";
-    echo $newFilePath;
 
-/*    if(move_uploaded_file($tmpFilePath, $newFilePath)) {
-      echo $newFilePath." upload success.<br>";
-    }*/
+    if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+      
+      exec("convert ".$newFilePath." -resize 1000x1000 ".$newFilePath);
+      exec("composite -dissolve 30% -gravity southeast ../images/logo.png ".$newFilePath." ".$newFilePath);
+      // exec("rm -f ".$newFilePath);
+      // exec("rm -f ".$resizeimg);
+      // compress($newFilePath,1000);
+      // watermark($newFilePath,"../images/logo.png",5,30);
+    }
   }
 }
 ?>
