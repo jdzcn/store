@@ -23,49 +23,44 @@ width:50%;
 <body>
 
     <form action="add.php" method="post" enctype="multipart/form-data">
+
+    <output id="result" ></output>
+
       <label for="name">商品名称</label>
-      <input type="text" id="name" name="name">
+      <input type="text" id="name" name="name" required placeholder=请输入商品名称>
   
-      <label for="files">商品图片</label>     
+      <label for="images">商品图片</label>     
       <input id="images" name="images[]" type="file" multiple="multiple" />
-<table>
-<tr>
-  <td>
-    
+
     <label for="category">商品分类</label>
     <select id="category" name="category">
-      <option value="0">餐具</option>
-      <option value="1">茶具</option>
+      <option value="0">茶具</option>
+      <option value="1">餐具</option>
       <option value="2">花器</option>
     </select>
-  </td>
-  <td>
-    
-<label for="tech">工艺</label>
+  
+    <label for="tech">工艺</label>
     <select id="tech" name="tech">
       <option value="0">釉下彩</option>
       <option value="1">珐琅彩</option>
       <option value="2">粉彩</option>
     </select>
-  </td>
-</tr>
 
-<tr>
-<td>
+    <label for="desc">描述</label>
+    <select id="desc" name="desc">
+      <option value="0">牡丹</option>
+      <option value="1">菊花</option>
+      <option value="2">梅花</option>
+    </select>
+
     <label for="spec">规格</label>
-    <input type="text" id="spec" name="spec">
+    <input type="text" id="spec" name="spec" placeholder=请输入规格>
   
-</td>
-<td>
     <label for="price">价格</label>
-    <input type="number" id="price" name="price">
-  
-</td>
-</tr>
-</table>
+    <input type="number" id="price" name="price" placeholder=请输入价格>
 
     <input type="submit" value="提交">
-    <output id="result" />
+
   </form>	
 	<script type="text/javascript">
 		function handleFileSelect() {
