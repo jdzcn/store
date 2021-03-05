@@ -1,7 +1,3 @@
-<?php
-  include("../conn.php");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,50 +25,17 @@
 
     <label for="category">商品分类</label>
     <select id="category" name="category">
-<?php
-  $sql = "SELECT sub_category.id as subid,category.name as cname,sub_category.name as sname FROM category,sub_category where category.id=sub_category.cid";
-  $result = mysqli_query($conn, $sql);
-   
-  if (mysqli_num_rows($result) > 0) {
-      while($row = mysqli_fetch_assoc($result)) {
-          echo "<option value=".$row['subid'].">".$row["cname"]."-".$row['sname']."</option>";
-      }
-  } else {
-      echo "empty.";
-  }
-?>
+    <option value=1>tableware</option>
     </select>
   
     <label for="tech">工艺</label>
     <select id="tech" name="tech">
-<?php
-  $sql = "SELECT * FROM tech";
-  $result = mysqli_query($conn, $sql);
-   
-  if (mysqli_num_rows($result) > 0) {
-      while($row = mysqli_fetch_assoc($result)) {
-          echo "<option value=".$row['id'].">".$row["name"]."</option>";
-      }
-  } else {
-      echo "empty.";
-  }
-?>
+    <option value=1>tableware</option>
     </select>
 
     <label for="desc">描述</label>
     <select id="desc" name="desc">
-    <?php
-  $sql = "SELECT * FROM description";
-  $result = mysqli_query($conn, $sql);
-   
-  if (mysqli_num_rows($result) > 0) {
-      while($row = mysqli_fetch_assoc($result)) {
-          echo "<option value=".$row['id'].">".$row["name"]."</option>";
-      }
-  } else {
-      echo "empty.";
-  }
-?>
+    <option value=1>tableware</option>
     </select>
 
     <label for="spec">规格</label>
@@ -118,6 +81,6 @@ document.getElementById('images').addEventListener('change', handleFileSelect, f
   </script>
 
   <?php
-    mysqli_close($conn);
+
     include("../footer.php");
   ?>

@@ -3,6 +3,8 @@
   namespace syc;
   require("smms.class.php");
 
+  // require("../conn.php");
+
 	echo "name:".$_POST["name"]."<br>";
 	echo "category:".$_POST["category"]."<br>";
 	echo "tech:".$_POST["tech"]."<br>";
@@ -25,14 +27,28 @@
           exec("convert ".$newFilePath." -resize 1000x1000 ".$newFilePath);
           exec("composite -dissolve 30% -gravity northeast ../logo2.png ".$newFilePath." ".$newFilePath);
 
-          // $sdk = new sdk\smms("ifpobuWYbVskHEpeHueDavbm5GftHmSW");
-          // $upload = $sdk->Image_Upload($newFilePath);
-          // print_r($upload);
-          // $data=json_decode($upload,true);
-          // $newfilename= "../images/".$data["data"]["storename"];
-          // rename($newFilePath,$newfilename);
+          $sdk = new sdk\smms("ifpobuWYbVskHEpeHueDavbm5GftHmSW");
+          $upload = $sdk->Image_Upload($newFilePath);
+          print_r($upload);
+          $data=json_decode($upload,true);
+          $storename=$data["data"]["storename"];
+          $newfilename= "../images/".$storename;
+          rename($newFilePath,$newfilename);
+          $imgstr=$imgstr."|".$storename;
 
         }
       }
   }
+
+  $sql="insert into product (name,cid,images,tid,did,spec,price,createdate) values ('".$_POST["name"]."',";
+  $sql.=$_POST["category"].",'".$imgstr."',".$_POST["tech"].",".$_POST["desc"].",'".$_POST["spec"]."',";
+  $sql.=$_POST["price"].",'".date("Y-m-d")."')";
+  echo $sql;  
+  // if (mysqli_query($conn, $sql)) {
+      
+  // } else {
+  //     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  // }
+
+  // mysqli_close($conn);
 ?>
