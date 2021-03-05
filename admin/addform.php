@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../css/default.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../css/default.css">
   <link rel="stylesheet" type="text/css" href="../css/lightform.css">
   <title>添加商品</title>
-<style>
-td {
-width:50%;
-}
-  output {
-    display: flex;
-    overflow: auto;
-}
-.thumbnail {
-    height: 100px;
-    margin: 10px;
-}
-</style>
+  
 </head>
 <body>
+  
+</body>
+</html>
 
     <form action="add.php" method="post" enctype="multipart/form-data">
 
@@ -93,6 +84,8 @@ width:50%;
 
 document.getElementById('images').addEventListener('change', handleFileSelect, false);
 
-	</script>
-</body>
-</html>
+  </script>
+
+  <?php
+    include("../footer.php");
+  ?>

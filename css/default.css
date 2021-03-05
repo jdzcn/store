@@ -13,9 +13,16 @@ body {
     padding: 20px;
 }
 
-table {
-    width: 100%;
+output {
+    display: flex;
+    overflow: auto;
 }
+
+.thumbnail {
+    height: 100px;
+    margin: 10px;
+}
+
 @media only screen and (min-width: 1400px) {
     body {
         max-width: 1024px;
