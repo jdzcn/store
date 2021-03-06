@@ -79,7 +79,7 @@
     <input type="text" id="spec" name="spec" placeholder=请输入规格>
   
     <label for="price">价格</label>
-    <input type="number" id="price" name="price" placeholder=请输入价格>
+    <input type="number" id="price" name="price" value=0 placeholder=请输入价格>
 
     <input type="submit" value="提交">
 
@@ -95,8 +95,17 @@
         for (var i = 0; i < files.length; i++) {
             var file = files[i];
             //Only pics
-            if (!file.type.match('image')) continue;
-
+            // if (!file.type.match('image')) continue;
+            
+            const maxAllowedSize = 2 * 1024 * 1024;
+              if (file.size > maxAllowedSize) {
+                alert('文件大小超出限制！');
+                event.target.value ='';
+                break;
+                // Here you can ask your users to load correct file
+                // alert("文件大小超出限制！")；
+                // exit(0);
+              }
             var picReader = new FileReader();
             picReader.addEventListener("load", function (event) {
                 var picFile = event.target;
