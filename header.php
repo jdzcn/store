@@ -1,6 +1,7 @@
 <?php
     define("Title","御雅堂");
-    define("WEBDIR","https://jdztao.com/store/");
+    // define("WEBSITE","https://jdztao.com/store/");
+	include("conn.php");
 ?>
 
 <!DOCTYPE html>
@@ -8,31 +9,30 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="<?=WEBDIR?>css/default.css">
-  <link rel="stylesheet" type="text/css" href="<?=WEBDIR?>css/lightform.css">
-  <link rel="stylesheet" type="text/css" href="<?=WEBDIR?>css/dropmenu.css">
-  <link rel="stylesheet" type="text/css" href="<?=WEBDIR?>css/topnav.css">
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" type="text/css" href="css/img.css">
+
 
   <title><?=Title?></title>
+<style>
+	.search {
+		display:inline;
+		float:right;
+	}
 
+	h4 {
+		display:inline;
+		width:200px;
+	}
+	</style>
 </head>
 <body>
 <header>
-		<a href="<?=dirname($_SERVER['SCRIPT_NAME'])?>"><b><?=Title?></b></a>
 
-  			<input type="search" id="query" name="key" placeholder="Search..." style="float:right">
-        <div class="dropdown">
-	<span>≡</span>  
-	<div class="dropdown-content">
-    <a href="#">商品管理</a>
-    <a href="#">查询统计</a>
-    <a href="#">数据维护</a>
-	</div>
-</div>
-<nav>
-	  <a href="#">Linux</a>
-	  <a href="#">Html</a>
-	  <a href="#">PHP</a>
-	  <a href="#" style="float: right;">CSS</a>
-	</nav>
-	</header>
+	<a href="index.php"><b><?=Title?></b></a>
+	<form class="search" action='index.php' method="get">
+	<input type="search" id="query" name="key" placeholder="Search...">
+	<button>GO</button>
+	</form>	<hr>
+</header>
+<main>
