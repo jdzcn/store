@@ -42,10 +42,10 @@
           // rename($newFilePath,$newfilename);
           $imgstr=$imgstr.$filename."|";
 
-          $sql="insert into product (name,cid,images,tid,did,spec,price,createdate) values ('".$_POST["name"]."',";
-          $sql.=$_POST["category"].",'".$imgstr."',".$_POST["tech"].",".$_POST["desc"].",'".$_POST["spec"]."',";
-          $sql.=$_POST["price"].",'".date("Y-m-d")."')";
-
+          $sql="insert into product (name,cid,images,tags,spec,price) values ('".$_POST["name"]."',";
+          $sql.=$_POST["category"].",'".$imgstr."','".implode(',',$_POST["tags"])."','".$_POST["spec"]."',";
+          $sql.=$_POST["price"].")";
+          // echo $sql;
           if (mysqli_query($conn, $sql)) {
               echo "商品添加成功！<br><br>";
               echo "<a href='addform.php'>继续添加</a>&nbsp; <a href='../index.php'>回到首页</a><br><br>";
