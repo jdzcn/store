@@ -29,7 +29,7 @@ $total=$r['total'];
 $totalPages = ceil($total / $perPage);
 
 $link = 'index.php?page=%d';
-$pagerContainer = '<div style="text-align:right">';   
+$pagerContainer = '<div class="row" style="text-align:right">';   
 $pagerContainer .= $total.'件商品'; 
 if( $totalPages != 0 ) 
 {
@@ -59,13 +59,14 @@ $pagerContainer .= '</div>';
 	$sql=$sql.$find[$fstyle]." limit $startAt,$perPage";
 
   	$result = mysqli_query($conn, $sql);
+	echo '<div class="main">';
     while($row = mysqli_fetch_assoc($result)) {
     	$img=explode('|',$row["images"]);
 ?>
 
 	<div class="responsive">
 	  <div class="img">
-	    <a target="_blank" href="<?='images/'.$img[0]?>">
+	    <a target="_blank" href="view.php?pid=<?=$row['id']?>">
 	      <img src="<?="thumbnail/".$img[0]?>" alt="<?=$row['name']?>"></a>
 		  <div class="desc"><?=$row['name']?></div>
 		  <span style="color:red"><?="￥".$row['price']?></span>
@@ -75,7 +76,7 @@ $pagerContainer .= '</div>';
 
 <?php
 	}
-	echo "</article></main>";
+	echo "</div>";
 	echo $pagerContainer;
 	
 	include("footer.php");

@@ -14,25 +14,12 @@
 
 
   <title><?=Title?></title>
-<style>
-	.search {
-		display:inline;
-		float:right;
-	}
 
-	header img {
-		width:60px;
-		height: auto;
-	}
-	footer {
-		text-align: center;
-	}
-	</style>
 </head>
 <body>
 <header>
 
-	<a href="index.php"><img src="logo.png"></a>
+	<a href="index.php"><img src="logo.png" width="60"></a>
 	<form class="search" action='index.php' method="get">
 	<input type="search" id="query" name="key" placeholder="Search...">
 	<button>GO</button>

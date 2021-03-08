@@ -29,7 +29,7 @@
         // }
         if(move_uploaded_file($tmpFilePath, $newFilePath)) {
           exec("convert ".$newFilePath." -resize 1000x1000 ".$newFilePath);
-          exec("convert ".$newFilePath." -resize 200x200 ".$thumbnail);
+          exec("convert ".$newFilePath." -resize 300x300 ".$thumbnail);
 
           exec("composite -dissolve 30% -gravity southeast ../logo.png ".$newFilePath." ".$newFilePath);
 
