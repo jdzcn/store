@@ -128,5 +128,4 @@ document.getElementById('images').addEventListener('change', handleFileSelect, f
 
   <?php
     mysqli_close($conn);
-    include("../footer.php");
   ?>

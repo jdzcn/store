@@ -1,18 +1,6 @@
 <?php
 	include("header.php");
-	echo "<aside>";
-	$sql = "SELECT sub_category.id as subid,category.name as cname,sub_category.name as sname FROM category,sub_category where category.id=sub_category.cid";
-  	$result = mysqli_query($conn, $sql);
-  	$category='';
-      while($row = mysqli_fetch_assoc($result)) {
-		  if($category !=$row['cname']) { 
-			  if($category!='') {echo "</ul><br>";}
-			  echo "<b>".$row['cname']."</b>&nbsp;<ul>";
-			  $category=$row['cname'];
-		  }
-          echo "<li><a href='index.php?cid=".$row["subid"]."'>".$row['sname']."</a>&nbsp;</li>";
-      }		
-	echo "</aside><article>";
+
 
 	$cid = isset($_GET['cid'])? htmlspecialchars($_GET['cid']) : '';
 	$key = isset($_GET['key'])? htmlspecialchars($_GET['key']) : '';
