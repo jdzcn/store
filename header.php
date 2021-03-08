@@ -20,16 +20,19 @@
 		float:right;
 	}
 
-	h4 {
-		display:inline;
-		width:200px;
+	header img {
+		width:60px;
+		height: auto;
+	}
+	footer {
+		text-align: center;
 	}
 	</style>
 </head>
 <body>
 <header>
 
-	<a href="index.php"><b><?=Title?></b></a>
+	<a href="index.php"><img src="logo.png"></a>
 	<form class="search" action='index.php' method="get">
 	<input type="search" id="query" name="key" placeholder="Search...">
 	<button>GO</button>

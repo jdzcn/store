@@ -17,34 +17,26 @@ body {
       flex-direction: column;
 }
 
-    header,
-    footer {
-      /*flex: 1;*/
-    }
-
     main {
       display: flex;
-
       flex: 1;
     }
 
     article {
-        display: flex;
-          flex-flow: row wrap;
-  align-content: flex-start;
+      display: flex;
+      flex-flow: row wrap;
+      align-content: flex-start;
       flex: 1;
     }
 
     aside {
       flex: 0 0 12em;
-
     }
 
 
     @media (max-width: 768px) {
       main {
         flex-direction: column;
-        flex: 1;
       }
       aside,article {
         flex: auto;
@@ -52,10 +44,11 @@ body {
 
       ul,li {
         display: inline;
+        padding: 0;
+        margin: 0;
+        list-style: none;
       }
-      div.img img {
-            width: 160px;
-      }
+
     }
 
 output {
