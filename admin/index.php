@@ -1,21 +1,7 @@
 <?php
-  include("../conn.php");
+    include("header.php");
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="../css/default.css">
-  <link rel="stylesheet" type="text/css" href="../css/lightform.css">
-  <title>添加商品</title>
-  
-</head>
-<body>
-  
-</body>
-</html>
 
     <form action="add.php" method="post" enctype="multipart/form-data">
 
@@ -40,7 +26,7 @@
 ?>
     </select>
   
-    <label for="tags">关键字</label>
+    <label for="tags">标签</label>
     <select id="tags" name="tags[]" size=10 multiple>
 <?php
   $sql = "SELECT * FROM tag";
@@ -107,5 +93,6 @@ document.getElementById('images').addEventListener('change', handleFileSelect, f
   </script>
 
   <?php
-    mysqli_close($conn);
+    
+    include('footer.php');
   ?>

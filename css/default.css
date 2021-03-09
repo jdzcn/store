@@ -44,6 +44,7 @@ body {
     }
     article .row {
       flex: 1;
+      margin: 20px;
     }
     aside {
       flex: 0 0 15em;

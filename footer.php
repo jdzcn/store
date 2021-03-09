@@ -1,3 +1,6 @@
+<?php
+	mysqli_close($conn);
+?>
 </article></main>
 <footer>
 <hr>
