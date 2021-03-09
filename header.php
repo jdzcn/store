@@ -19,7 +19,10 @@
 <body>
 <header>
 
-	<a href="index.php"><img src="logo.png" width="60"></a>
+	<a href="index.php">
+		<h3 style="display: inline">御雅堂</h3>
+		<!-- <img src="logo.png" width="60"> -->
+	</a>
 	<form class="search" action='index.php' method="get">
 	<input type="search" id="query" name="key" placeholder="Search...">
 	<button>GO</button>
