@@ -53,12 +53,52 @@ body {
     }
     aside {
       flex: 0 0 15em;
-      /*margin-right: 1em;*/
+      position: relative;
     }
     aside img {
       width:360px;
       height: auto;
+      border-radius: 8px;
+      margin:  5px;
     }
+
+    .bottomright {
+    position: absolute;
+    color:white;
+    bottom: 8px;
+    right: 16px;
+    font-size: 18px;
+    }
+
+    .bottomright a {
+      color:white;
+    }
+
+    ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+
+ul.pagination li a.active {
+    background-color: #eee;
+    color: white;
+    border: 1px solid #ddd;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 
     @media (max-width: 768px) {
       main {
