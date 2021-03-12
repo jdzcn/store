@@ -1,7 +1,7 @@
 <?php
 
 	include('header.php');
-
+	include('test.php');
 
 	$id = htmlspecialchars($_GET['id']);
 	$name = htmlspecialchars($_GET['name']);

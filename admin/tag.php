@@ -1,5 +1,6 @@
 <?php
 	include('header.php');
+  include('test.php');
 ?>
     <form action="addtag.php" method="get" >
     </select>

@@ -2,7 +2,7 @@
 
   // namespace syc;
   // require("smms.class.php");
-
+  include('test.php');
   require("../conn.php");
 
 	// echo "name:".$_POST["name"]."<br>";
@@ -55,7 +55,7 @@
           
           if (mysqli_query($conn, $sql)) {
               echo "商品添加成功！<br><br>";
-              echo "<a href='addform.php'>继续添加</a>&nbsp; <a href='../index.php'>回到首页</a><br><br>";
+              echo "<a href='index.php'>继续添加</a>&nbsp; <a href='../index.php'>回到首页</a><br><br>";
               echo "sql:".$sql;
           } else {
               echo "Error: " . $sql . "<br>" . mysqli_error($conn);
