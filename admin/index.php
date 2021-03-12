@@ -84,19 +84,31 @@ function geprod(str)
     {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
       {
-        var tag=JSON.parse(xmlhttp.responseText);
+        var prod=JSON.parse(xmlhttp.responseText);
 
         // document.getElementById("id").value=xmlhttp.responseText;
-        // document.getElementById("id").value=tag.id;
-        document.getElementById("name").value=tag.name;
+        // document.getElementById("id").value=prod.id;
+        document.getElementById("name").value=prod.name;
         document.getElementById("result").innerHTML="";
 
         document.getElementById("images").value=null;
-        document.getElementById("imgstr").value=tag.images;
-        document.getElementById("category").value=tag.cid;
-        // document.getElementById("tags").value=implode(',',tag.tags);
-        document.getElementById("spec").value=tag.spec;
-        document.getElementById("price").value=tag.price;
+        document.getElementById("imgstr").value=prod.images;
+        document.getElementById("category").value=prod.cid;
+
+        var values = prod.tags;
+        var splitValues = values.split(',');
+        var multi = document.getElementById('tags');
+
+        multi.value = null; // Reset pre-selected options (just in case)
+        var multiLen = multi.options.length;
+        for (var i = 0; i < multiLen; i++) {
+          if (splitValues.indexOf(multi.options[i].value) >= 0) {
+            multi.options[i].selected = true;
+          }
+        }
+        // document.getElementById("prods").value=implode(',',prod.prods);
+        document.getElementById("spec").value=prod.spec;
+        document.getElementById("price").value=prod.price;
 
 
       }
