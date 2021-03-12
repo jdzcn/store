@@ -40,17 +40,30 @@
           // $storename=$data["data"]["storename"];
           // $newfilename= "../images/".$storename;
           // rename($newFilePath,$newfilename);
-          $imgstr=$imgstr.$filename."|";
+          // $imgstr=$imgstr.$filename."|";
          
         }
 
       }
   }
-          $imgstr=substr_replace($imgstr,'',-1);
-          $sql="insert into product (name,cid,images,tags,spec,price) values ('".$_POST["name"]."',";
-          $sql.=$_POST["category"].",'".$imgstr."','".implode(',',$_POST["tags"])."','".$_POST["spec"]."',";
-          $sql.=$_POST["price"].")";
-          // echo $sql;
+          // $imgstr=substr_replace($imgstr,'',-1);
+          $prod=$_POST["prod"];
+          $name=$_POST["name"];
+          $cid=$_POST["category"];
+          $imgstr=$_POST["imgstr"];
+          $tags=implode(',',$_POST["tags"]);
+          $spec=$_POST["spec"];
+          $price=$_POST["price"];
+          if ($prod==0) {
+            $sql="insert into product (name,cid,images,tags,spec,price) values ('".$name."',";
+            $sql.=$cid.",'".$imgstr."','".$tags."','".$spec."',";
+            $sql.=$price.")";
+          }
+          else {
+            $sql="update product set name='".$name."',cid=".$cid.",images='".$imgstr."',tags='".$tags."',spec='".$spec."',price=".$price;
+            $sql.=" where id=".$prod;
+          }
+          echo $sql;
 
           
           if (mysqli_query($conn, $sql)) {

@@ -6,14 +6,30 @@
 
     <form action="add.php" method="post" enctype="multipart/form-data">
 
-    <output id="result" ></output>
 
+          <label for="prod">选择</label>
+    <select id="prod" name="prod" onchange="geprod(this.value)">
+    <option value=0>新商品</option>
+  <?php
+    $sql = "SELECT id,name FROM product order by id desc";
+    $result = mysqli_query($conn, $sql);
+   
+      while($row = mysqli_fetch_assoc($result)) {
+          echo "<option value=".$row['id'];
+          echo ">".$row['id']."-".$row["name"]."</option>";
+      }
+
+?>
+    </select>
+
+    
       <label for="name">商品名称</label>
       <input type="text" id="name" name="name" required placeholder=请输入商品名称>
-  
+      <output id="result" ></output>
+
       <label for="images">商品图片</label>     
       <input id="images" name="images[]" type="file" accept="image/*" multiple />
-
+      <input type="text" id="imgstr" name="imgstr" placeholder=商品图片>
     <label for="category">商品分类</label>
     <select id="category" name="category">
 <?php
@@ -52,14 +68,56 @@
 
   </form>	
 	<script type="text/javascript">
+
+function geprod(str)
+{
+  if (str==0) return;
+  
+  var xmlhttp;
+
+  if (window.XMLHttpRequest)
+    xmlhttp=new XMLHttpRequest();
+  else
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  xmlhttp.onreadystatechange=function()
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+        var tag=JSON.parse(xmlhttp.responseText);
+
+        // document.getElementById("id").value=xmlhttp.responseText;
+        // document.getElementById("id").value=tag.id;
+        document.getElementById("name").value=tag.name;
+        document.getElementById("result").innerHTML="";
+
+        document.getElementById("images").value=null;
+        document.getElementById("imgstr").value=tag.images;
+        document.getElementById("category").value=tag.cid;
+        // document.getElementById("tags").value=implode(',',tag.tags);
+        document.getElementById("spec").value=tag.spec;
+        document.getElementById("price").value=tag.price;
+
+
+      }
+    }
+  xmlhttp.open("GET","getprod.php?id="+str,true);
+  xmlhttp.send();
+}
+
+
+
 		function handleFileSelect() {
     //Check File API support
     if (window.File && window.FileList && window.FileReader) {
 
         var files = event.target.files; //FileList object
         var output = document.getElementById("result");
+        var imgs=document.getElementById("imgstr");
+        imgs.value="";
         output.innerHTML="";
-        for (var i = 0; i < files.length; i++) {
+        var len=files.length;
+        for (var i = 0; i < len; i++) {
             var file = files[i];
             //Only pics
             // if (!file.type.match('image')) continue;
@@ -83,7 +141,10 @@
             });
             //Read the image
             picReader.readAsDataURL(file);
+            imgs.value+=file.name+(i==(len-1)?"":"|");
         }
+        // imgs.value=imgs.value.substr(0,(len-1));
+
     } else {
         console.log("Your browser does not support File API");
     }

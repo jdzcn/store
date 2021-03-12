@@ -3,7 +3,7 @@
   include('test.php');
 ?>
     <form action="addtag.php" method="get" >
-    </select>
+    <!-- </select> -->
   
     <label for="tags">选择</label>
     <select id="tags" name="tags" onchange="getag(this.value)">
