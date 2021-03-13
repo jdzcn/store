@@ -93,6 +93,13 @@ function geprod(str)
 
         document.getElementById("images").value=null;
         document.getElementById("imgstr").value=prod.images;
+        var output = document.getElementById("result");
+        var img=prod.images.split('|');
+        var div = document.createElement("div");
+                // div.style="display:inline";
+                div.innerHTML = "<img class='thumbnail' src='../thumbnail/" + img[0]+ "' />";
+                output.insertBefore(div, null);
+        // output.innerHTML = "<img class='thumbnail' src='../thumbnail/" + img[0]+ "' width=100px/>";
         document.getElementById("category").value=prod.cid;
 
         var values = prod.tags;
